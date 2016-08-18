@@ -1,0 +1,531 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+		<title>Bán điện thoại </title>
+		 <script type="text/javascript" src="js/jquery.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+
+<!-- jQuery library -->
+
+<!-- Latest compiled JavaScript -->
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		
+		 <!-- Custom Theme files -->
+		<link href="css/style.css" rel='stylesheet' type='text/css' />
+   		 <!-- Custom Theme files -->
+   		 <!---- start-smoth-scrolling---->
+		
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+		 <!---- start-smoth-scrolling---->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<!----webfonts--->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+		<!---//webfonts--->
+		<!----start-top-nav-script---->
+		<script>
+			$(function() {
+				var pull 		= $('#pull');
+					menu 		= $('nav ul');
+					menuHeight	= menu.height();
+				$(pull).on('click', function(e) {
+					e.preventDefault();
+					menu.slideToggle();
+				});
+				$(window).resize(function(){
+	        		var w = $(window).width();
+	        		if(w > 320 && menu.is(':hidden')) {
+	        			menu.removeAttr('style');
+	        		}
+	    		});
+			});
+		</script>
+		<!----//End-top-nav-script---->
+	</head>
+	
+	<body>
+	<!-- Dialog Login -->
+<div class="modal fade" id="dialog-login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="exampleModalLabel"  style="color:red;">LOGIN</h1>
+      </div>
+      <div class="modal-body">
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="input-user" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="input-password" placeholder="Password">
+  </div>
+
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg " class="btn btn-primary" data-toggle="modal" data-target="#dangki" data-dismiss="modal">REGISTER</button>
+        <button type="button" id="btn-login" onclick="loginFireBase();" class="btn btn-danger btn-lg">LOGIN</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<<!-- Dialog register -->
+		<div class="modal fade" id="dialog-register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title"  style="color:red;">REGISTER</h1>
+      </div>
+      <div class="modal-body">
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Họ và Tên</label>
+    <input type="email" class="form-control" id="name-register" placeholder="Họ và tên">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="user-register" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="password-register" placeholder="Password">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Confirm Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+</form>
+      </div>
+      <div class="modal-footer">
+     
+        <button type="button" class="btn btn-danger btn-lg" id="btn-register" onclick="registerFirebase();">REGISTER</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+  <div id="toastbar"></div>
+		<!----container---->
+		<div class="container">
+			<!----top-header---->
+			<div class="top-header">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" title="barndlogo" /></a>
+				</div>
+				<div class="top-header-info">
+					<div class="top-contact-info">
+						<ul class="unstyled-list list-inline">
+							<li><span class="phone"> </span>0906 - 818 880 </li>
+							<li><span class="mail"> </span><a href="#">datpntps03135@gmail.com</a></li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="cart-details">
+						<div class="add-to-cart">
+							<ul class="unstyled-list list-inline">
+								<li><span class="cart"> </span>
+					
+								</li>
+							</ul>
+						</div>
+						<div class="login-rigister">
+							<ul class="unstyled-list list-inline">
+								<li><a id="display-login" class="login" data-toggle="modal" data-target="#dialog-login" >Login</a></li>
+								<li><a id="display-register" class="rigister" data-toggle="modal" data-target="#dialog-register">REGISTER <span> </span></a></li>
+								<li><a id="display-logout" class="rigister" onclick="logoutFirebase();" style="display:none;">LOGOUT <span> </span></a></li>
+								<div class="clearfix"> </div>
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<!----//top-header---->
+			<!---top-header-nav---->
+			<div class="top-header-nav"> 
+			<!----start-top-nav---->
+			 <nav class="top-nav main-menu">
+					<ul class="top-nav">
+						<li><a href="products.html">TRANG CHỦ </a><span> </span></li>
+					
+						<li><a href="products.html">SẢN PHẨM</a><span> </span></li>
+						<li><a href="contact.html">LIÊN HỆ</a></li>
+						<div class="clearfix"> </div>
+					</ul>
+					<a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+			  </nav>
+			  <!----End-top-nav---->
+			  <!---top-header-search-box--->
+			  <div class="top-header-search-box">
+			  	<form>
+			  		<input type="text" placeholder="Search" required / maxlength="22">
+			  		<input type="submit" value=" " >
+			  	</form>
+			  </div>
+			  <!---top-header-search-box--->
+						<div class="clearfix"> </div>
+			</div>
+		</div>
+			<!--//top-header-nav---->
+			<!----content---->
+				<div class="content">
+					<div class="container">
+
+				<!----product-details--->
+				<div class="product-details">
+					<div class="container">
+					<div class="product-details-row1">
+						<div class="product-details-row1-head">
+							<h2>iPhone 5S</h2>
+							
+						</div>
+						<div class="col-md-4 product-details-row1-col1">
+							<!----details-product-slider--->
+						<!-- Include the Etalage files -->
+							<link rel="stylesheet" href="css/etalage.css">
+							<script src="js/jquery.etalage.min.js"></script>
+						<!-- Include the Etalage files -->
+						<script>
+								jQuery(document).ready(function($){
+					
+									$('#etalage').etalage({
+										thumb_image_width: 300,
+										thumb_image_height: 400,
+										source_image_width: 900,
+										source_image_height: 1000,
+										show_hint: true,
+										click_callback: function(image_anchor, instance_id){
+											alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+										}
+									});
+									// This is for the dropdown list example:
+									$('.dropdownlist').change(function(){
+										etalage_show( $(this).find('option:selected').attr('class') );
+									});
+		
+							});
+						</script>
+						<!----//details-product-slider--->
+						<div class="details-left">
+							<div class="details-left-slider">
+								<ul id="etalage">
+									<li>
+										<a href="optionallink.html">
+											<img class="etalage_thumb_image" src="images/5s.png" />
+											<img class="etalage_source_image" src="images/5s.png" />
+										</a>
+									</li>
+									<li>
+										<img class="etalage_thumb_image" src="images/5s.png" />
+										<img class="etalage_source_image" src="images/5s.png" />
+									</li>
+									<li>
+										<img class="etalage_thumb_image" src="images/5s.png" />
+										<img class="etalage_source_image" src="images/5s.png" />
+									</li>
+									<li>
+										<img class="etalage_thumb_image" src="images/5s.png" />
+										<img class="etalage_source_image" src="images/5s.png" />
+									</li>
+
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8 product-details-row1-col2">
+						<div class="product-rating">
+							<a class="rate" href="#"><span> </span></a>
+							<label><a href="#">Read <b>8</b> Reviews</a></label>
+						</div>
+						<div class="product-price">
+							<div class="product-price-left text-right">
+								<span>8.900.000 VND</span>
+								<h5>8.000.000 VND</h5>
+							</div>
+							<div class="product-price-right">
+								<a href="#"><span> </span></a>
+								<label> save <b>20%</b></label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="product-price-details">
+							<p class="text-right">Đặt Online hoặc Gọi 18006601 ưu tiên khuyến mãi (SL có hạn):</p>
+							<a class="shipping" href="#"><span> </span>Free shipping</a>
+							<div class="clearfix"> </div>
+							<div class="product-size-qty">
+								<div class="pro-size"> 
+									<span>Màu:</span>
+									<select>
+										<option>Đen</option>
+										<option>Vàng</option>
+										<option>Trắng</option>
+									</select>
+								</div>
+								<div class="pro-qty">
+									<span>Số lượng:</span>
+									<select>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div> 
+								<div class="clearfix"> </div>
+							</div>
+							<div class="clearfix"> </div>
+							<div class="product-cart-share">
+								<div class="add-cart-btn">
+									<input type="button" value="Add to cart" />
+								</div>
+								<ul class="product-share text-right">
+									<h3>Share This:</h3>
+									<ul>
+										<li><a class="share-face" href="#"><span> </span> </a></li>
+										<li><a class="share-twitter" href="#"><span> </span> </a></li>
+										<li><a class="share-google" href="#"><span> </span> </a></li>
+										<li><a class="share-rss" href="#"><span> </span> </a></li>
+										<div class="clear"> </div>
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</div>
+						<div class="clearfix"> </div>
+				<!--//product-details--->
+				</div>
+				<!---- product-details ---->
+				<div class="product-tabs">
+					<!--Horizontal Tab-->
+				    <div id="horizontalTab">
+				        <ul>
+				            <li><a href="#tab-1">Đánh giá chi tiết</a></li>
+				            <li><a href="#tab-2">Thông số kĩ thuật</a></li>
+				          
+				        </ul>
+				        <div id="tab-1" class="product-complete-info">
+				        	<h3>iPhone 5S - Thiết kế đã hoàn mỹ lại càng hoàn hảo hơn:</h3>
+		
+				       		<div class="product-fea">
+							<p>Điều đầu tiên cần nói đến chính là thiết kế. Thông thường các bản nâng cấp của Apple với chữ S đi sau đều giữ nguyên thiết kế bên ngoài mà chủ yếu vẫn là nâng cấp sức mạnh bên trong nhiều hơn. 
+							Tuy nhiên, iPhone 5S có thể xem là một ngoại lệ.</p>
+							<p>iPhone 5S có một thay đổi đáng ý chú nhất về bề ngoài chính là nút Home. Sử dụng công nghệ Touch ID nhận dạng vân tay mới, Apple đã tạo một “điểm nhấn” cần thiết trên chiếc điện thoại này với một vòng kim loại cùng màu với máy và bề mặt nút Home cũng phẳng hơn, tạo nên sự liền lạc và sang trọng hơn hẳn.</p>
+				       		</div>
+				        </div>
+				        <div id="tab-2" class="product-complete-info">
+				        	<h3>Thông số cơ bản:</h3>
+				 
+				       		<div class="product-fea">
+				       			<p>Kiểu điện thoại: 		Thanh (thẳng) + Cảm ứng</p>
+				       			<p>Màn hình :				4 inch (640 x 1136 pixels )</p>
+				       			<p>Camera :					Chính : 8 MP, Phụ 1.2 MP</p>
+				       			<p>Bộ nhớ trong :			16 GB</p>
+				       			<p>Hệ điều hành :			iOS 9</p>
+								<p>Chipset :				Apple A7</p>
+								<p>CPU :					Dual-core 1.3Ghz
+								<p>GPU :					PowerVR G6430
+								<p>Kích thước :				123.8 x 58.6 x 7.6 m</p>
+				       		</div>
+				        </div>
+		
+				    </div>
+				    <!-- Responsive Tabs JS -->
+				    <script src="js/jquery.responsiveTabs.js" type="text/javascript"></script>
+				
+				    <script type="text/javascript">
+				        $(document).ready(function () {
+				            $('#horizontalTab').responsiveTabs({
+				                rotate: false,
+				                startCollapsed: 'accordion',
+				                collapsible: 'accordion',
+				                setHash: true,
+				                disabled: [3,4],
+				                activate: function(e, tab) {
+				                    $('.info').html('Tab <strong>' + tab.id + '</strong> activated!');
+				                }
+				            });
+				
+				            $('#start-rotation').on('click', function() {
+				                $('#horizontalTab').responsiveTabs('active');
+				            });
+				            $('#stop-rotation').on('click', function() {
+				                $('#horizontalTab').responsiveTabs('stopRotation');
+				            });
+				            $('#start-rotation').on('click', function() {
+				                $('#horizontalTab').responsiveTabs('active');
+				            });
+				            $('.select-tab').on('click', function() {
+				                $('#horizontalTab').responsiveTabs('activate', $(this).val());
+				            });
+				
+				        });
+				    </script>
+				</div>
+				<!-- //product-details ---->
+				</div>
+				</div>
+			<!----content---->
+			<div class="clearfix"> </div>
+			<!----footer--->
+			<div class="footer">
+				<div class="container">
+					<div class="col-md-3 footer-logo">
+					
+					</div>
+					<div class="col-md-7 footer-links">
+						<ul class="unstyled-list list-inline">
+							<li><a href="#"> Faq</a> <span> </span></li>
+							<li><a href="#"> Terms and Conditions</a> <span> </span></li>
+							<li><a href="#"> Secure Payments</a> <span> </span></li>
+							<li><a href="#"> Shipping</a> <span> </span></li>
+							<li><a href="contact.html"> Contact</a> </li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="col-md-2 footer-social">
+						<ul class="unstyled-list list-inline">
+							<li><a class="pin" href="#"><span> </span></a></li>
+							<li><a class="twitter" href="#"><span> </span></a></li>
+							<li><a class="facebook" href="#"><span> </span></a></li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			 </div>
+			 <div class="clearfix"> </div>
+			<!---//footer--->
+			<!---copy-right--->
+					<div class="copy-right">
+						<div class="container">
+							<p>Template by <a href="http://w3layouts.com/">Copyright</a></p>
+							<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+							<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+						</div>
+					</div>
+			<!--//copy-right--->
+		</div>
+		<!----container---->
+	</body>
+		<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-storage.js"></script>
+	<script>
+	
+//var btn-login = document.getElementById("btn-login");
+//var btn-register= document.getElementById('btn-register');
+ var toastbar = document.getElementById("toastbar");
+ var login = document.getElementById('display-login');
+ var register = document.getElementById('display-register');
+ var logout = document.getElementById('display-logout');
+ 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBo5ledNkC542VG1YMZ4eJC3Hrg8nKkNmQ",
+    authDomain: "assignmen-datpntps03135.firebaseapp.com",
+    databaseURL: "https://assignmen-datpntps03135.firebaseio.com",
+    storageBucket: "assignmen-datpntps03135.appspot.com",
+  };
+  firebase.initializeApp(config);
+ 
+  function loginFireBase(){
+	var user = document.getElementById('input-user').value;
+	var pass = document.getElementById('input-password').value;
+	
+	firebase.auth().signInWithEmailAndPassword(user, pass).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  toastbar.className="show";
+  toastbar.innerHTML=errorMessage;
+  setTimeout(function(){ toastbar.className = toastbar.className.replace("show", ""); }, 3000);
+  // ...
+});
+	$("#dialog-login").modal("hide");
+  }
+  function registerFirebase(){
+		var name = document.getElementById('name-register');
+		var userRegister = document.getElementById('user-register').value;
+		var passRegister = document.getElementById('password-register').value;
+		
+firebase.auth().createUserWithEmailAndPassword(userRegister, passRegister).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+	toastbar.innerHTML="Register Success";
+	toastbar.className="show";
+	  
+	setTimeout(function(){ toastbar.className = toastbar.className.replace("show", ""); }, 3000);
+		
+	  }
+	  function logoutFirebase(){
+		firebase.auth().signOut().then(function() {
+}, function(error) {
+  // An error happened.
+});
+	  }
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+      if(user.uid =="KxLicSEqDcNKmt4aLyTmS7x2A753"){
+	location="admin.html";
+  }
+    login.style.display="none";
+	register.style.display="none";
+	logout.style.display="block";
+  } else {
+    // No user is signed in.
+	login.style.display="block";
+	register.style.display="block";
+	logout.style.display="none";
+  }
+});
+</script>
+</html>
+

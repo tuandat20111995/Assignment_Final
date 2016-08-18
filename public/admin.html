@@ -1,0 +1,459 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+		<title>Quản lý admin </title>
+		 <script type="text/javascript" src="js/jquery.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+
+<!-- jQuery library -->
+
+<!-- Latest compiled JavaScript -->
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		
+		 <!-- Custom Theme files -->
+		<link href="css/style.css" rel='stylesheet' type='text/css' />
+   		 <!-- Custom Theme files -->
+   		 <!---- start-smoth-scrolling---->
+		
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+		 <!---- start-smoth-scrolling---->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<!----webfonts--->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+		<!---//webfonts--->
+		<!----start-top-nav-script---->
+		<script>
+			$(function() {
+				var pull 		= $('#pull');
+					menu 		= $('nav ul');
+					menuHeight	= menu.height();
+				$(pull).on('click', function(e) {
+					e.preventDefault();
+					menu.slideToggle();
+				});
+				$(window).resize(function(){
+	        		var w = $(window).width();
+	        		if(w > 320 && menu.is(':hidden')) {
+	        			menu.removeAttr('style');
+	        		}
+	    		});
+			});
+		</script>
+		<!----//End-top-nav-script---->
+	</head>
+	
+	<body>
+	<!-- Dialog Login -->
+<div class="modal fade" id="dialog-login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="exampleModalLabel"  style="color:red;">LOGIN</h1>
+      </div>
+      <div class="modal-body">
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="input-user" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="input-password" placeholder="Password">
+  </div>
+
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg " class="btn btn-primary" data-toggle="modal" data-target="#dangki" data-dismiss="modal">REGISTER</button>
+        <button type="button" id="btn-login" onclick="loginFireBase();" class="btn btn-danger btn-lg">LOGIN</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<<!-- Dialog register -->
+		<div class="modal fade" id="dialog-register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title"  style="color:red;">REGISTER</h1>
+      </div>
+      <div class="modal-body">
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Họ và Tên</label>
+    <input type="email" class="form-control" id="name-register" placeholder="Họ và tên">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="user-register" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="password-register" placeholder="Password">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Confirm Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+</form>
+      </div>
+      <div class="modal-footer">
+     
+        <button type="button" class="btn btn-danger btn-lg" id="btn-register" onclick="registerFirebase();">REGISTER</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<!-- Dialog Thêm dữ liệu -->
+<div class="modal fade" id="dialog-addsmart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="exampleModalLabel"  style="color:red;">THÊM SẢN PHẨM</h1>
+      </div>
+      <div class="modal-body">
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Mã sản phẩm</label>
+    <input type="text" class="form-control" id="input-id" placeholder="Mã sản phẩm">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Tên sản phẩm</label>
+    <input type="text" class="form-control" id="input-ten" placeholder="Tên sản phẩm">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Giá</label>
+    <input type="text" class="form-control" id="input-gia" placeholder="Giá">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Màu</label>
+    <input type="text" class="form-control" id="input-mau" placeholder="Màu">
+  </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Hình ảnh</label>
+    <input type="file" class="form-control" id="input-anh" >
+  </div>
+
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-login" onclick="addSmartPhone();" class="btn btn-danger btn-lg" >THÊM SẢN PHẨM</button>
+		<button type="button" id="btn-login" onclick="" class="btn btn-danger btn-lg">Làm lại</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+		<!----container---->
+		<div class="container">
+			<!----top-header---->
+			<div class="top-header">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" title="barndlogo" /></a>
+				</div>
+				<div class="top-header-info">
+					<div class="top-contact-info">
+						<ul class="unstyled-list list-inline">
+							<li><span class="phone"> </span>0906 - 818 880 </li>
+							<li><span class="mail"> </span><a href="#">datpntps03135@gmail.com</a></li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="cart-details">
+						<div class="add-to-cart">
+							<ul class="unstyled-list list-inline">
+								<li><span class="cart"> </span>
+					
+								</li>
+							</ul>
+						</div>
+						<div class="login-rigister">
+							<ul class="unstyled-list list-inline">
+								<li><a id="display-login" class="login" data-toggle="modal" data-target="#dialog-login" >Login</a></li>
+								<li><a id="display-register" class="rigister" data-toggle="modal" data-target="#dialog-register">REGISTER <span> </span></a></li>
+								<li><a id="display-logout" class="rigister" onclick="logoutFirebase();" style="display:none;">LOGOUT <span> </span></a></li>
+								<div class="clearfix"> </div>
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<!----//top-header---->
+			<!---top-header-nav---->
+			
+			<!--//top-header-nav---->
+			<!----content---->
+						<div class="content">
+					<div class="container">
+				<!--- products ---->
+				
+				<!----speical-products---->
+				<div class="special-products all-poroducts" >
+					<div class="s-products-head">
+						<div class="s-products-head-left">
+							<button type="button" class="btn btn-danger btn-lg" id="btn-add"  data-toggle="modal" data-target="#dialog-addsmart">THÊM SẢN PHẨM</button>
+						</div>
+					
+						<div class="clearfix"> </div>
+					</div>
+					<!----special-products-grids---->
+						
+						
+						<div class="special-products-grids" id="danhsach"  >
+
+					</div>
+					
+				<div ></div>
+
+					<!---//special-products-grids---->
+					<br style="clear:both;"/>
+				</div>
+				<!----->
+				</div>
+				<!---//speical-products---->
+				</div>
+			<!----content---->
+			<div class="clearfix"> </div>
+			<!----footer--->
+			<div class="footer">
+				<div class="container">
+					<div class="col-md-3 footer-logo">
+					
+					</div>
+					<div class="col-md-7 footer-links">
+						<ul class="unstyled-list list-inline">
+							<li><a href="#"> Faq</a> <span> </span></li>
+							<li><a href="#"> Terms and Conditions</a> <span> </span></li>
+							<li><a href="#"> Secure Payments</a> <span> </span></li>
+							<li><a href="#"> Shipping</a> <span> </span></li>
+							<li><a href="contact.html"> Contact</a> </li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="col-md-2 footer-social">
+						<ul class="unstyled-list list-inline">
+							<li><a class="pin" href="#"><span> </span></a></li>
+							<li><a class="twitter" href="#"><span> </span></a></li>
+							<li><a class="facebook" href="#"><span> </span></a></li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			 </div>
+			 <div class="clearfix"> </div>
+			<!---//footer--->
+			<!---copy-right--->
+					<div class="copy-right">
+						<div class="container">
+							<p>Template by <a href="http://w3layouts.com/">Copyright</a></p>
+							<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+							<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+						</div>
+					</div>
+			<!--//copy-right--->
+		</div>
+		<!----container---->
+	</body>
+		<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-storage.js"></script>
+	<script>
+	
+//var btn-login = document.getElementById("btn-login");
+//var btn-register= document.getElementById('btn-register');
+
+ var login = document.getElementById('display-login');
+ var register = document.getElementById('display-register');
+ var logout = document.getElementById('display-logout');
+ 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBo5ledNkC542VG1YMZ4eJC3Hrg8nKkNmQ",
+    authDomain: "assignmen-datpntps03135.firebaseapp.com",
+    databaseURL: "https://assignmen-datpntps03135.firebaseio.com",
+    storageBucket: "assignmen-datpntps03135.appspot.com",
+  };
+  firebase.initializeApp(config);
+ 
+  function loginFireBase(){
+	var user = document.getElementById('input-user').value;
+	var pass = document.getElementById('input-password').value;
+	
+	firebase.auth().signInWithEmailAndPassword(user, pass).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+
+  // ...
+});
+	$("#dialog-login").modal("hide");
+  }
+  function registerFirebase(){
+		var name = document.getElementById('name-register');
+		var userRegister = document.getElementById('user-register').value;
+		var passRegister = document.getElementById('password-register').value;
+		
+firebase.auth().createUserWithEmailAndPassword(userRegister, passRegister).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+	  }
+	function logoutFirebase(){
+		firebase.auth().signOut().then(function() {
+}, function(error) {
+  // An error happened.
+});
+	  }
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    login.style.display="none";
+	register.style.display="none";
+	logout.style.display="block";
+  } else {
+    // No user is signed in.
+	location = "index.html"
+	login.style.display="block";
+	register.style.display="block";
+	logout.style.display="none";
+  }
+  
+  
+});
+function addSmartPhone(){
+	var masp = document.getElementById("input-id").value;
+	var tensp = document.getElementById("input-ten").value;
+	var gia = document.getElementById("input-gia").value;
+	var mau = document.getElementById("input-mau").value;
+	
+	var storageRef = firebase.storage().ref();
+	
+	var hinhanh = document.getElementById("input-anh").files[0];
+	
+	var metadata = {
+  contentType: 'image/jpeg'
+};
+
+// Upload file and metadata to the object 'images/mountains.jpg'
+var uploadTask = storageRef.child('images/' + hinhanh.name).put(hinhanh, metadata);
+
+// Listen for state changes, errors, and completion of the upload.
+uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+  function(snapshot) {
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+      case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+    }
+  }, function(error) {
+  switch (error.code) {
+    case 'storage/unauthorized':
+      // User doesn't have permission to access the object
+      break;
+
+    case 'storage/canceled':
+      // User canceled the upload
+      break;
+
+   
+
+    case 'storage/unknown':
+      // Unknown error occurred, inspect error.serverResponse
+      break;
+  }
+}, function() {
+  // Upload completed successfully, now we can get the download URL
+  var imageURL = uploadTask.snapshot.downloadURL;
+  
+  			  firebase.database().ref('sanpham').push({
+				masp: masp,
+				tensp: tensp,
+				gia: gia,
+				mau: mau,
+				hinhanh : imageURL
+			  });
+});
+	
+}
+
+
+		var commentsRef = firebase.database().ref('sanpham');
+		var danhsach = document.getElementById("danhsach");
+		
+		commentsRef.on('child_added', function(dulieu) {
+		  danhsach.innerHTML += '<div class="col-md-3 special-products-grid text-center">'
+							+'<a class="product-here" href="single-page.html"><img src="'+dulieu.val().hinhanh+'" style="width:150px; height:150px" /></a>'
+							+'<h4><a href="single-page.html">'+dulieu.val().tensp+'</a></h4>'
+							+'<p>'+dulieu.val().gia+' VNĐ</p>'
+							+'<a type="button" class="product-btn" onclick="delSmart(\''+dulieu.key+'\');"><small>Xóa</small><label> </label></a>'
+						+'</div>'
+		});
+ function showSmartPhone(){
+		var item = "";
+		firebase.database().ref('sanpham').on('child_added', function(dulieu) {
+		  item += '<div class="col-md-3 special-products-grid text-center">'
+							+'<a class="product-here" href="single-page.html"><img src="'+dulieu.val().hinhanh+'" style="width:150px; height:150px" /></a>'
+							+'<h4><a href="single-page.html">'+dulieu.val().tensp+'</a></h4>'
+							+'<p>'+dulieu.val().gia+' VNĐ</p>'
+							+'<a type="button" class="product-btn"  onclick="delSmart(\''+dulieu.key+'\');"><small>Xóa</small><label> </label></a>'
+						+'</div>'
+		});
+		danhsach.innerHTML = item;
+}
+		function delSmart(ma){
+			firebase.database().ref('sanpham/'+ma).remove();
+			showSmartPhone();
+		}
+</script>
+</html>
+
